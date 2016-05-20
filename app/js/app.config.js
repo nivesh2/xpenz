@@ -1,25 +1,26 @@
 'use strict';
-
-var routing = function ($stateProvider,$urlRouterProvider,$locationProvider){
-  $locationProvider.html5Mode(true);
-  $urlRouterProvider.otherwise('/');
-  $stateProvider
-    .state('contacts',{
+var route = {
+    home :{
+      url:'/',
+      template:require('./module/home/home.html'),
+      controller:'HomeController',
+      controllerAs:'ctrl'
+    },
+    today:{
       abstract:true,
-      url:'/contacts',
-      template:'<h1>Contacts</h1> <br> <ui-view/>',
-    })
-    .state('contacts.list',{
-      url:'/list',
-      template:'<h3>List 1</h3>'
-    })
-    .state('contacts.detail',{
-      url:'/detail',
-      template:'<h3>Detail 1</h3>'
-    });
-
+      url:'/today',
+      template:'<ui-view></ui-view>'
+    }
 };
 
-//routing.$inject = ['$urlRouterProvider','$locationProvider'];
+export default function ($stateProvider,$urlRouterProvider,$locationProvider){
+  $locationProvider.html5Mode(true);
+  //base route
+  $urlRouterProvider.otherwise('/');
 
-export default routing;
+  //list out all the routes for the application
+  $stateProvider
+    .state('home',route.home)
+    .state('today',route.today);
+
+}

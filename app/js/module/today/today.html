@@ -1,0 +1,17 @@
+
+<h1>{{ctrl.title}}</h1>
+
+<div>
+  <table>
+    <tr>
+      <th>Amount</th>
+      <th>Message</th>
+      <th>Time</th>
+    </tr>
+    <tr ng-repeat="(key,value) in ctrl.expenseList | orderBy : 'date'">
+      <th>{{value.amount}}</th>
+      <th>{{value.message}}</th>
+      <th>{{value.date.toLocaleTimeString()}}</th>
+    </tr>
+  </table>
+</div>

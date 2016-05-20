@@ -1,4 +1,15 @@
-  <greeting name="home.title"></greeting>
-
-<button ng-click="home.changeTitle()">Change</button>
-<button ng-click="home.randomUser()">Random</button>
+<h2>{{ctrl.title}}</h2>
+<div>
+  <form >
+    <label for="amount">Expense Amount</label>
+    <input name="amount" type="number" ng-model="ctrl.amount" required="required" />
+    <br><br>
+    <label for="message">message</label>
+    <input name="message" type="text" ng-model="ctrl.message" />
+    <br><br>
+    <!-- Also submit time on submission -->
+    <input type="submit" ng-click="ctrl.addExpense()" value="Submit"/>
+    </form>
+    <br><hr>
+    <h2 ng-show="ctrl.totalExpense">Total: {{ctrl.totalExpense}}</h2>
+</div>
